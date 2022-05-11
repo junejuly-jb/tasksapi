@@ -5,7 +5,7 @@ const cors = require('cors');
 require('dotenv').config();
 
 //import routes
-const apiRoutes = require('./routes/api');
+const apiRoutes = require('./api/api');
 
 mongoose.connect(process.env.URI, { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection;
