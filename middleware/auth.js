@@ -5,7 +5,7 @@ module.exports = (req, res, next) => {
           const token = req.headers.authorization.split(' ')[1];
      }
      else {
-          return res.status(401).json({ "success": false, "message": "Authentication failed" });
+          return res.status(401).json({ "status": 401, "success": false, "message": "Authentication failed" });
      }
      
      const token = req.headers.authorization.split(' ')[1];
@@ -15,6 +15,6 @@ module.exports = (req, res, next) => {
           req.userName = verify.name;
           next();
      } catch (error) {
-          return res.status(401).json({ "success": false, "message": "Authentication failed" });
+          return res.status(401).json({"status": 401, "success": false, "message": "Authentication failed" });
      }
 }
