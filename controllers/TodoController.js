@@ -50,4 +50,15 @@ const markComplete = async (req, res) => {
     }
 }
 
-module.exports = { addTodo, todos, deleteTodo, markComplete };
+
+const unMarkComplete = async (req, res) => {
+    try {
+        const result = await Todo.updateOne({ "_id": req.params.id, "owner": req.user }, { $set: { "flag": false } });
+        if (result.modifiedCount > 0) return res.status(200).json({ "success": true, "message": "Todo marked as incomplete" });
+        return res.status(400).json({ "success": false, "message": "Something went wrong" });
+    } catch (e) {
+        return res.status(400).json({ "success": false, "message": e.message });
+    }
+}
+
+module.exports = { addTodo, todos, deleteTodo, markComplete, unMarkComplete };

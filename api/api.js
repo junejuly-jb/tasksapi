@@ -12,5 +12,6 @@ router.post('/add-todo', auth, TodoController.addTodo);
 router.get('/todos', auth, TodoController.todos);
 router.delete('/delete-todo/:id', auth, TodoController.deleteTodo);
 router.put('/mark-todo/:id', auth, TodoController.markComplete);
+router.put('/unmark-todo/:id', auth, TodoController.unMarkComplete);
 
 module.exports = router;
